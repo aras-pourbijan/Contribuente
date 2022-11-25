@@ -10,6 +10,8 @@ namespace Contribuente
     {
         static void Main(string[] args)
         {
+            Contribuente P1 = new Contribuente();    
+            P1.StartMenu(); 
         }
     }
 }
