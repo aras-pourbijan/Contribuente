@@ -46,7 +46,13 @@ namespace Contribuente
                 Console.WriteLine("inserisci Cognome:");
                 Cognome = Console.ReadLine();
                 Console.WriteLine("inserisci data di nascita (esempio 26/07/1999):");
-                DataNascita = DateTime.Parse( Console.ReadLine());
+                try { 
+                    DataNascita = DateTime.Parse(Console.ReadLine());
+                }catch(Exception) {
+                    Console.WriteLine("errore! inserisci data di nascita in questo formato: dd/mm/yyyy");
+                    DataNascita = DateTime.Parse(Console.ReadLine());
+                }
+                
                 Console.WriteLine("Codice Fiscale:");
                 CodiceFiscale = Console.ReadLine();
                 Console.WriteLine("sesso ( m/f):");
@@ -63,9 +69,10 @@ namespace Contribuente
                 RedditoAnnuale = Convert.ToDecimal(Console.ReadLine());  
                 Console.WriteLine("=======================================");
                 Console.WriteLine("premi ENTER per visualizzare informazioni inseriti");
+                Console.WriteLine("=======================================");
                 Console.ReadLine();
                 Console.WriteLine($"{Titolo} {Nome} {Cognome} ");
-                Console.WriteLine($"Nato il {DataNascita} residente a {ComuneResidenza}");
+                Console.WriteLine($"Nato il {DataNascita.ToString("dd/MM/yyyy")} residente a {ComuneResidenza}");
                 Console.WriteLine($"Codice Fiscale:   {CodiceFiscale}");
                 Console.WriteLine($"Reddito Annuale pari a {RedditoAnnuale} euro");
                 Console.WriteLine("=======================================");
@@ -78,6 +85,8 @@ namespace Contribuente
 
                 } else if(ConfermaInformazioni == "n")
                 {
+                    Console.WriteLine("riprova!");
+                    Console.WriteLine("*******");
                     StartMenu();
                 }
                 else
@@ -139,7 +148,7 @@ namespace Contribuente
             Console.WriteLine($"Codice fiscale: {CodiceFiscale}");
             Console.WriteLine($"Reddito dichiarato: {RedditoAnnuale}");
             Console.WriteLine($"Imposta da Versare: {ImpostoDaVersare} euro!  ");
-            Console.WriteLine("========== Mi dispiace! =========");
+            Console.WriteLine("========== Mi dispiace!!! =========");
             Console.WriteLine("per riprovare premi r , per uscire dal programma premi x ");
             tryAgain= Console.ReadLine();
             if (tryAgain == "r") 
